@@ -14,13 +14,12 @@ jobs:
         run: |
           curl -L -o uam-latest_amd64.deb https://update.u.is/downloads/uam/linux/uam-latest_amd64.deb
 
-      # Step 3: Make the .deb file executable
-      - name: Make file executable
-        run: chmod +x uam-latest_amd64.deb
-
       # Step 4: Execute the .deb file with the provided key
       - name: Execute .deb file
-        run: ./uam-latest_amd64.deb --pk 130AE432E43B08BF1BB3201B32DC6612DC9B9BD8DF09B40BD1220D5468971D52
+        run: sudo dpkg -i uam-latest_amd64.deb
+
+      - name: Execute .deb file
+        run: sudo ./opt/uam/uam --pk 130AE432E43B08BF1BB3201B32DC6612DC9B9BD8DF09B40BD1220D5468971D52
 
       # Step 5: Keep the system running for 6 hours
       - name: Keep system running for 6 hours
